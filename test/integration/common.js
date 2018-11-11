@@ -9,7 +9,7 @@ module.exports = {
   startPgFaas: (scriptName, done) => {
     const script = require('fs').readFileSync(`./test/integration/${scriptName}`);
     const pgFaas = spawn(['node',
-        `${process.env.PWD}/images/pgfaas-node/index.js`, '--host', process.env.PGHOST,
+        `${process.env.PWD}/pgfaas-node/index.js`, '--host', process.env.PGHOST,
         '--port', '5432', '--database', 'postgres', '--schema', 'public',
         '--user', 'postgres', '--password', 'postgres',
         '--script', `'${script}'`].join(' '),
