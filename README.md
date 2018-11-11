@@ -2,6 +2,19 @@
 
 Proof-of-concept of a FaaS on PostGIS. The 
 
+## Build and push or base images
+
+```bash
+  source ./secrets.sh; source ./configuration.sh
+  docker build --tag ${DOCKER_REGISTRY}/pgfaas-node:${PGFAAS_NODE_VERSION}\
+     ./pgfaas-node
+  docker login --username ${DOCKER_USERNAME} --password ${DOCKER_PASSWORD}
+  docker push ${DOCKER_REGISTRY}/pgfaas-node:${PGFAAS_NODE_VERSION}
+```
+
+# TODO
+# TODO-------------------------------------
+
 
 ## Requirements
 
