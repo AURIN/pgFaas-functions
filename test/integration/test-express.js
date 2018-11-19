@@ -64,4 +64,22 @@ describe('pgFaas service', () => {
     }).end(JSON.stringify(payload));
   });
 
+  it('long execution function', function (done) {
+    console.log(`Started long execution function test, be patient...`);
+    const payload = {verb: 'long', a: 1, b: 2};
+    const req= http.request(_.extend(common.postOptions, {path: '/'}), (res) => {
+      let body = '';
+      res.on('data', (chunk) => {
+        body += chunk;
+      });
+      res.on('end', () => {
+        assert.equal(res.statusCode, 200, `${body}`);
+        const result = JSON.parse(body);
+        assert.equal(result.message, 'done');
+        done();
+      });
+    });
+    req.setTimeout(300000);
+    req.end(JSON.stringify(payload));
+  });
 });

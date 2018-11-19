@@ -7,5 +7,10 @@ module.exports = {
   },
   headers: (sqlexec, req, callback) => {
     return callback(null, req.headers);
+  },
+  long: (sqlexec, req, callback) => {
+    setTimeout(() => {
+      callback(null, {message: "done"});
+    }, 70000)
   }
 };

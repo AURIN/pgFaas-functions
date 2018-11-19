@@ -23,10 +23,7 @@ Deployment of a PostGIS Docker container
 Download of data from OSM, then loading into PostGIS (assuming the container IP address is 172.17.0.2)
 
 ```bash
-curl -XGET "http://download.geofabrik.de/australia-oceania/new-caledonia-latest.osm.bz2"\
- -o /tmp/new-caledonia-latest.osm.bz2
-bzip2 -d /tmp/new-caledonia-latest.osm.bz2 
-PGPASS=postgres ; osm2pgsql -U postgres -H 172.17.0.2 /tmp/new-caledonia-latest.osm   
+
 ```
 Run tests (these tests assume PostgreSQL container to be on IP address 172.17.0.2; if the IP address is different, the PGHOST env variable has to be changed in package.json):
 ```bash

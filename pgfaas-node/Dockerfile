@@ -37,9 +37,9 @@ ENV cgi_headers="true"
 ENV fprocess="node index.js"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:3000"
-ENV exec_timeout="20s"
-ENV write_timeout="25s"
-ENV read_timeout="25s"
+ENV exec_timeout="300s"
+ENV write_timeout="305s"
+ENV read_timeout="300s"
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 

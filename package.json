@@ -1,6 +1,6 @@
 {
   "name": "pgfaas-functions",
-  "version": "0.2.0-SNAPSHOT",
+  "version": "0.2.0",
   "description": "pgFaas Base Functions",
   "key-words": [],
   "author": "",
@@ -25,6 +25,6 @@
     "rewire": "^4.0.1"
   },
   "scripts": {
-    "itest": "export PGHOST='172.17.0.2'; mocha --no-colors --timeout 60000 test/integration"
+    "itest": "export PGHOST='172.17.0.2'; mocha --no-colors --timeout 300000 test/integration"
   }
 }
