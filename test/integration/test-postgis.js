@@ -68,4 +68,19 @@ describe('pgFaas service', () => {
     }).end(JSON.stringify(payload));
   });
 
+  it('script/sqlerror', function (done) {
+    const payload = {verb: 'sqlerror'};
+    http.request(_.extend(common.postOptions, {path: '/'}), (res) => {
+      let body = '';
+      res.on('data', (chunk) => {
+        body += chunk;
+      });
+      res.on('end', () => {
+        assert.equal(res.statusCode, 500, `${body}`);
+        assert.equal(body.includes('parserOpenTable'), true, `${body}`);
+
+        done();
+      });
+    }).end(JSON.stringify(payload));
+  });
 });

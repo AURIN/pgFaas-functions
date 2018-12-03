@@ -3,23 +3,22 @@ const {Client} = require('pg');
 var options = {};
 
 const executeQuery = (sql, params, callback) => {
-    const client = new Client(options);
+  const client = new Client(options);
 
-    if (options.host == undefined ||
-      options.port == undefined ||
-      options.database == undefined ||
-      options.schema == undefined ||
-      options.user == undefined ||
-      options.password == undefined) {
-      return callback({message: 'missing parameter'}, null);
-    }
-    client.connect();
-    client.query(sql, params, (err, result) => {
-      client.end();
-      return callback(err, result);
-    });
+  if (options.host == undefined ||
+    options.port == undefined ||
+    options.database == undefined ||
+    options.schema == undefined ||
+    options.user == undefined ||
+    options.password == undefined) {
+    return callback({message: 'missing parameter'}, null);
   }
-;
+  client.connect();
+  client.query(sql, params, (err, result) => {
+    client.end();
+    return callback(err, result);
+  });
+};
 
 module.exports = {
   init: (optionsIn) => {

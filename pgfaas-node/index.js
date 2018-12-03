@@ -51,7 +51,7 @@ app.get('/tables', (req, res) => {
   try {
     sqlexec.tables(program.schema, (err, resTables) => {
       if (err) {
-        headers(res).status(500).json(err);
+        headers(res).status(500).json({message: JSON.stringify(err)});
       } else {
         headers(res).status(200).json(resTables);
       }
@@ -68,7 +68,7 @@ app.get('/tables/:tableName', (req, res) => {
   try {
     sqlexec.columns(program.schema, req.params.tableName, (err, resDescr) => {
       if (err) {
-        headers(res).status(500).json(err);
+        headers(res).status(500).json({message: JSON.stringify(err)});
       } else {
         headers(res).status(200).json(resDescr);
       }
@@ -85,7 +85,7 @@ app.post('/', (req, res) => {
   try {
     script[req.body.verb](sqlexec, req, (err, result) => {
       if (err) {
-        headers(res).status(500).json(err);
+        headers(res).status(500).json({message: JSON.stringify(err)});
       } else {
         headers(res).status(200).json(result);
       }

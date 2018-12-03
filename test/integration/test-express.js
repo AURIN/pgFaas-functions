@@ -63,7 +63,7 @@ describe('pgFaas service', () => {
       });
     }).end(JSON.stringify(payload));
   });
-
+/* XXX
   it('long execution function', function (done) {
     console.log(`Started long execution function test, be patient...`);
     const payload = {verb: 'long', a: 1, b: 2};
@@ -82,4 +82,5 @@ describe('pgFaas service', () => {
     req.setTimeout(300000);
     req.end(JSON.stringify(payload));
   });
+  */
 });

@@ -28,5 +28,13 @@ module.exports = {
         return callback(err, geoJson);
       }
     );
+  },
+  sqlerror: (sqlexec, req, callback) => {
+    sqlexec.query(
+      `SELECT COUNT(*) FROM XXX`, [], (err, result) => {
+        return callback(err, null);
+      }
+    );
   }
+
 };
